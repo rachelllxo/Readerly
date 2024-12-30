@@ -4,90 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Readerly - Explore. Imagine. Read.</title>
-  <body>
-  <button id="signInButton">Sign In</button>
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Search for books...">
-    <button id="searchButton">Search</button>
-  </div>
-  <div id="resultsContainer" class="results-container"></div>
-</body>
-
-  <!-- Add to the head -->
-<script type="module">
-  // Firebase Initialization
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
-  import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyBCyFvjY81OMW_IOvqs8_MKBlX-YzIrpwU",
-    authDomain: "readerly-9b264.firebaseapp.com",
-    projectId: "readerly-9b264",
-    storageBucket: "readerly-9b264.appspot.com",
-    messagingSenderId: "12934939313",
-    appId: "1:12934939313:web:f049bfad73b3e942879890",
-    measurementId: "G-58NW5E44G7"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth();
-  const db = getFirestore(app);
-
-  // Sign-In Function
-  document.getElementById("signInButton").addEventListener("click", async () => {
-    const email = prompt("Enter your email:");
-    const password = prompt("Enter your password:");
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      alert(`Welcome back, ${userCredential.user.email}`);
-    } catch (error) {
-      alert(`Error signing in: ${error.message}`);
-    }
-  });
-
-  // Book Search Functionality
-  document.getElementById("searchButton").addEventListener("click", async () => {
-    const query = document.getElementById("searchInput").value.trim();
-    const apiKey = "AIzaSyBnf0d4hoLX1VNqLw-AcslhUPiuVyAm4MI";
-    const resultsContainer = document.getElementById("resultsContainer");
-
-    if (!query) {
-      resultsContainer.innerHTML = "<p>Please enter a search query.</p>";
-      return;
-    }
-
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&key=${apiKey}`;
-
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-
-      if (!data.items || data.items.length === 0) {
-        resultsContainer.innerHTML = "<p>No books found. Try a different search term.</p>";
-        return;
-      }
-
-      resultsContainer.innerHTML = data.items
-        .map(
-          (book) => `
-            <div class="result-card">
-              <img src="${book.volumeInfo.imageLinks?.thumbnail || "https://via.placeholder.com/150"}" alt="${book.volumeInfo.title}">
-              <div class="content">
-                <div class="title">${book.volumeInfo.title}</div>
-                <div class="author">${book.volumeInfo.authors?.join(", ") || "Unknown Author"}</div>
-                <div class="description">${book.volumeInfo.description?.substring(0, 100) || "No description available."}...</div>
-              </div>
-            </div>`
-        )
-        .join("");
-    } catch (error) {
-      console.error("Error fetching books:", error);
-      resultsContainer.innerHTML = "<p>Failed to fetch books. Try again later.</p>";
-    }
-  });
-</script>
-
   <style>
     /* General Styles */
     body {
@@ -204,6 +120,63 @@
         width: 80%;
       }
     }
+
+    /* Additional Styles for New Features */
+    .result-card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      padding: 10px;
+    }
+
+    .result-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .result-card .content {
+      padding: 10px;
+    }
+
+    .result-card .title {
+      font-weight: bold;
+    }
+
+    .result-card .author {
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    .rating-review {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .rating-review input {
+      width: 50px;
+      text-align: center;
+    }
+
+    .review-form {
+      margin-top: 10px;
+    }
+
+    .review-form textarea {
+      width: 100%;
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    .review-form button {
+      padding: 10px;
+      background-color: #70be15;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
@@ -242,36 +215,39 @@
     <p>&copy; 2024 Readerly | All Rights Reserved</p>
   </footer>
 
-  <!-- Include Firebase and Custom JavaScript -->
-  <!-- Firebase SDK -->
+  <!-- Firebase and JavaScript -->
+  <!-- Firebase App (Core SDK) -->
   <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-analytics.js"></script>
+
+  <!-- Firebase Authentication -->
   <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js"></script>
+
+  <!-- Firebase Firestore -->
   <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js"></script>
 
-  <!-- Custom JavaScript -->
+  <!-- Initialize Firebase -->
   <script>
-    // Your Firebase Configuration
     const firebaseConfig = {
       apiKey: "AIzaSyBCyFvjY81OMW_IOvqs8_MKBlX-YzIrpwU",
-     authDomain: "readerly-9b264.firebaseapp.com",
-  projectId: "readerly-9b264",
-  storageBucket: "readerly-9b264.firebasestorage.app",
-  messagingSenderId: "12934939313",
-  appId: "1:12934939313:web:f049bfad73b3e942879890",
-  measurementId: "G-58NW5E44G7"
+      authDomain: "readerly-9b264.firebaseapp.com",
+      projectId: "readerly-9b264",
+      storageBucket: "readerly-9b264.firebasestorage.app",
+      messagingSenderId: "12934939313",
+      appId: "1:12934939313:web:f049bfad73b3e942879890",
+      measurementId: "G-58NW5E44G7"
     };
 
     // Initialize Firebase
     const app = firebase.initializeApp(firebaseConfig);
-    const analytics = firebase.analytics();
     const auth = firebase.auth();
     const db = firebase.firestore();
+  </script>
 
-    // Book Search Functionality
+  <script>
+    // Basic book rating functionality can be implemented here
     document.getElementById('searchButton').addEventListener('click', async () => {
       const query = document.getElementById('searchInput').value.trim();
-      const apiKey = 'YOUR_GOOGLE_BOOKS_API_KEY';
+      const apiKey = 'AIzaSyBnf0d4hoLX1VNqLw-AcslhUPiuVyAm4MI'; // Replace with your API key
       const resultsContainer = document.getElementById('resultsContainer');
 
       if (!query) {
@@ -297,8 +273,14 @@
               <div class="result-card">
                 <img src="${volumeInfo.imageLinks?.thumbnail || 'https://via.placeholder.com/150'}" alt="${volumeInfo.title}">
                 <div class="content">
-                  <h3>${volumeInfo.title}</h3>
-                  <p>${volumeInfo.authors?.join(', ') || 'Unknown Author'}</p>
+                  <div class="title">${volumeInfo.title}</div>
+                  <div class="author">${volumeInfo.authors?.join(', ') || 'Unknown Author'}</div>
+                  <div class="description">${volumeInfo.description?.substring(0, 100) || 'No description available.'}...</div>
+                  <div class="rating-review">
+                    <input type="number" min="1" max="5" placeholder="Rate (1-5)">
+                    <button onclick="submitReview('${book.id}')">Submit Review</button>
+                  </div>
+                  <div class="reviews" id="reviews-${book.id}"></div>
                 </div>
               </div>
             `;
@@ -309,6 +291,44 @@
         resultsContainer.innerHTML = '<p>An error occurred while fetching books. Please try again later.</p>';
       }
     });
+
+    // Function to Submit Reviews
+    async function submitReview(bookId) {
+      const reviewInput = document.querySelector(`#reviews-${bookId} input[type="number"]`);
+      const rating = reviewInput.value;
+
+      if (!auth.currentUser) {
+        alert('Please log in to submit a review.');
+        return;
+      }
+
+      if (rating < 1 || rating > 5) {
+        alert('Please provide a rating between 1 and 5.');
+        return;
+      }
+
+      const review = prompt('Write your review:');
+      if (!review) {
+        alert('Review cannot be empty.');
+        return;
+      }
+
+      try {
+        const reviewData = {
+          userId: auth.currentUser.uid,
+          bookId,
+          rating: Number(rating),
+          review,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        };
+
+        await db.collection('reviews').add(reviewData);
+        alert('Review submitted successfully!');
+      } catch (error) {
+        console.error('Error submitting review:', error);
+        alert('Failed to submit review.');
+      }
+    }
   </script>
 </body>
 </html>
