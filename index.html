@@ -6,198 +6,120 @@
   <title>Readerly - Explore. Imagine. Read.</title>
   <style>
     /* General Styles */
-body {
-    font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  line-height: 1.6;
-  color: #000000;
-}
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      line-height: 1.6;
+      color: #000000;
+    }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-/* Navigation Bar */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  background-color: #70be15;
-  color: white;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+    img {
+      max-width: 100%;
+      height: auto;
+    }
 
-nav .logo {
-  font-size: 24px;
-  font-weight: bold;
-}
+    /* Navigation Bar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background-color: #70be15;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-nav .nav-links {
-  list-style: none;
-  display: flex;
-}
+    nav .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
 
-nav .nav-links li {
-  margin: 0 15px;
-}
+    nav .nav-links {
+      list-style: none;
+      display: flex;
+    }
 
-nav .nav-links a {
-  color: white;
-  font-size: 16px;
-  transition: color 0.3s ease;
-}
+    nav .nav-links li {
+      margin: 0 15px;
+    }
 
-nav .nav-links a:hover {
-  color: #70be15;
-}
+    nav .nav-links a {
+      color: white;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
 
-/* Hero Section */
-header {
-  height: 100vh;
-  background: linear-gradient(to bottom, #70be15, #8eff16);
-  color: rgb(0, 0, 0);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+    nav .nav-links a:hover {
+      color: #70be15;
+    }
 
-header .hero-content {
-  max-width: 600px;
-}
+    /* Hero Section */
+    header {
+      height: 100vh;
+      background: linear-gradient(to bottom, #70be15, #8eff16);
+      color: rgb(0, 0, 0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
 
-header h1 {
-  font-size: 48px;
-  margin-bottom: 10px;
-}
+    header .hero-content {
+      max-width: 600px;
+    }
 
-header p {
-  font-size: 20px;
-  margin-bottom: 20px;
-}
+    header h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
 
-header .cta-button {
-  padding: 10px 20px;
-  background-color: white;
-  color: #70be15;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
+    header p {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
 
-header .cta-button:hover {
-  background-color: #70be15;
-  color: white;
-}
+    header .cta-button {
+      padding: 10px 20px;
+      background-color: white;
+      color: #70be15;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
 
-/* Search Section */
-.search-container {
-  text-align: center;
-  margin: 50px auto;
-}
+    header .cta-button:hover {
+      background-color: #70be15;
+      color: white;
+    }
 
-.search-container input {
-  width: 60%;
-  padding: 10px;
-  font-size: 16px;
-  margin-right: 10px;
-}
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      nav .nav-links {
+        flex-direction: column;
+        gap: 10px;
+      }
 
-.search-container button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #70be15;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+      header h1 {
+        font-size: 32px;
+      }
 
-.search-container button:hover {
-  background-color: #70be15;
-}
+      header p {
+        font-size: 18px;
+      }
 
-/* Results Section */
-.results-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-/* About Us Section */
-.about-section {
-  background-color: #70be15;
-  padding: 50px 20px;
-  text-align: center;
-  color: #000000
-}
-
-.about-section h2 {
-  margin-bottom: 20px;
-  color: #000000
-}
-
-/* Contact Us Section */
-.contact-section {
-  padding: 50px 20px;
-  background-color:#70be15;
-  color: rgb(0, 0, 0);
-  text-align: center;
-}
-
-.contact-section h2 {
-  margin-bottom: 20px;
-}
-
-.contact-section form {
-  max-width: 600px;
-  margin: 0 auto;
-  display: grid;
-  gap: 15px;
-}
-
-.contact-section form input,
-.contact-section form textarea,
-.contact-section form button {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: none;
-}
-
-.contact-section form textarea {
-  resize: none;
-  height: 100px;
-}
-
-.contact-section form button {
-  background-color: #70be15;
-  color: rgb(0, 0, 0);
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.contact-section form button:hover {
-  background-color: rgb(0, 0, 0);
-  color: #70be15;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 15px 0;
-  background-color: #70be15;
-  color: rgb(0, 0, 0);
-}
-
+      .search-container input {
+        width: 80%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -208,6 +130,7 @@ footer {
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About Us</a></li>
       <li><a href="#contact">Contact Us</a></li>
+      <li><a href="#login">Sign In</a></li>
     </ul>
   </nav>
 
@@ -230,72 +153,78 @@ footer {
     <div id="resultsContainer" class="results-container"></div>
   </main>
 
-  <!-- About Us Section -->
-  <section id="about" class="about-section">
-    <h2>About Us</h2>
-    <p>Readerly is a platform designed to help book lovers discover their next great read effortlessly. Whether you're into fiction, non-fiction, or niche genres, we've got you covered!</p>
-  </section>
-
-  <!-- Contact Us Section -->
-  <section id="contact" class="contact-section">
-    <h2>Contact Us</h2>
-    <p>Have feedback or need support? Reach out to us!</p>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
   <!-- Footer -->
   <footer>
     <p>&copy; 2024 Readerly | All Rights Reserved</p>
   </footer>
 
+  <!-- Include Firebase and Custom JavaScript -->
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js"></script>
+
+  <!-- Custom JavaScript -->
   <script>
-   document.getElementById('searchButton').addEventListener('click', async () => {
-    const query = document.getElementById('searchInput').value.trim();
-    const apiKey = 'AIzaSyBnf0d4hoLX1VNqLw-AcslhUPiuVyAm4MI'; // Replace with your API key
-    const resultsContainer = document.getElementById('resultsContainer');
-  
-    if (!query) {
-      resultsContainer.innerHTML = '<p>Please enter a search query.</p>';
-      return;
-    }
-  
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&key=${apiKey}`;
-  
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-  
-      if (!data.items || data.items.length === 0) {
-        resultsContainer.innerHTML = '<p>No books found. Try a different search term.</p>';
+    // Your Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBCyFvjY81OMW_IOvqs8_MKBlX-YzIrpwU",
+     authDomain: "readerly-9b264.firebaseapp.com",
+  projectId: "readerly-9b264",
+  storageBucket: "readerly-9b264.firebasestorage.app",
+  messagingSenderId: "12934939313",
+  appId: "1:12934939313:web:f049bfad73b3e942879890",
+  measurementId: "G-58NW5E44G7"
+    };
+
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const analytics = firebase.analytics();
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // Book Search Functionality
+    document.getElementById('searchButton').addEventListener('click', async () => {
+      const query = document.getElementById('searchInput').value.trim();
+      const apiKey = 'YOUR_GOOGLE_BOOKS_API_KEY';
+      const resultsContainer = document.getElementById('resultsContainer');
+
+      if (!query) {
+        resultsContainer.innerHTML = '<p>Please enter a search query.</p>';
         return;
       }
-  
-      resultsContainer.innerHTML = data.items
-        .map((book) => {
-          const volumeInfo = book.volumeInfo;
-          return `
-            <div class="result-card">
-              <img src="${volumeInfo.imageLinks?.thumbnail || 'https://via.placeholder.com/150'}" alt="${volumeInfo.title}">
-              <div class="content">
-                <div class="title">${volumeInfo.title}</div>
-                <div class="author">${volumeInfo.authors?.join(', ') || 'Unknown Author'}</div>
-                <div class="description">${volumeInfo.description?.substring(0, 100) || 'No description available.'}...</div>
+
+      const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&key=${apiKey}`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (!data.items || data.items.length === 0) {
+          resultsContainer.innerHTML = '<p>No books found. Try a different search term.</p>';
+          return;
+        }
+
+        resultsContainer.innerHTML = data.items
+          .map((book) => {
+            const volumeInfo = book.volumeInfo;
+            return `
+              <div class="result-card">
+                <img src="${volumeInfo.imageLinks?.thumbnail || 'https://via.placeholder.com/150'}" alt="${volumeInfo.title}">
+                <div class="content">
+                  <h3>${volumeInfo.title}</h3>
+                  <p>${volumeInfo.authors?.join(', ') || 'Unknown Author'}</p>
+                </div>
               </div>
-            </div>
-          `;
-        })
-        .join('');
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      resultsContainer.innerHTML = '<p>An error occurred while fetching books. Please try again later.</p>';
-    }
-  });
-  
+            `;
+          })
+          .join('');
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        resultsContainer.innerHTML = '<p>An error occurred while fetching books. Please try again later.</p>';
+      }
+    });
   </script>
 </body>
 </html>
