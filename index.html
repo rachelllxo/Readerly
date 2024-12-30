@@ -143,6 +143,8 @@
       gap: 20px;
       padding: 20px;
       justify-items: center;
+      margin: 0 auto; /* This centers the grid */
+      max-width: 1200px; /* Limits the width of the grid */
     }
 
     .result-card {
@@ -268,8 +270,10 @@
       color: white;
       text-align: center;
       padding: 20px;
-      margin-top: auto;
       font-size: 14px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
     }
 
     footer p {
@@ -373,7 +377,6 @@
   </script>
 
   <script>
-    // Basic book rating functionality can be implemented here
     document.getElementById('searchButton').addEventListener('click', async () => {
       const query = document.getElementById('searchInput').value.trim();
       const apiKey = 'AIzaSyBnf0d4hoLX1VNqLw-AcslhUPiuVyAm4MI'; // Replace with your API key
