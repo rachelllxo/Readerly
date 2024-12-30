@@ -101,6 +101,97 @@
       color: white;
     }
 
+    /* Search Section */
+    .search-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .search-container input {
+      width: 60%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .search-container button {
+      padding: 10px 20px;
+      background-color: #70be15;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .search-container button:hover {
+      background-color: #58a212;
+    }
+
+    /* About Us Section */
+    #about {
+      padding: 50px;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    #about h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    #about p {
+      font-size: 18px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Contact Form Section */
+    #contact {
+      padding: 50px;
+      background-color: #eaeaea;
+      text-align: center;
+    }
+
+    #contact h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    #contact form {
+      display: flex;
+      flex-direction: column;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    #contact input, #contact textarea {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    #contact button {
+      padding: 10px 20px;
+      background-color: #70be15;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #contact button:hover {
+      background-color: #58a212;
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
       nav .nav-links {
@@ -119,63 +210,6 @@
       .search-container input {
         width: 80%;
       }
-    }
-
-    /* Additional Styles for New Features */
-    .result-card {
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      overflow: hidden;
-      padding: 10px;
-    }
-
-    .result-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .result-card .content {
-      padding: 10px;
-    }
-
-    .result-card .title {
-      font-weight: bold;
-    }
-
-    .result-card .author {
-      font-size: 14px;
-      margin: 5px 0;
-    }
-
-    .rating-review {
-      margin-top: 10px;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .rating-review input {
-      width: 50px;
-      text-align: center;
-    }
-
-    .review-form {
-      margin-top: 10px;
-    }
-
-    .review-form textarea {
-      width: 100%;
-      padding: 5px;
-      font-size: 14px;
-    }
-
-    .review-form button {
-      padding: 10px;
-      background-color: #70be15;
-      color: white;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
     }
   </style>
 </head>
@@ -209,6 +243,23 @@
     </div>
     <div id="resultsContainer" class="results-container"></div>
   </main>
+
+  <!-- About Us Section -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Readerly is the ultimate platform for discovering and exploring books from various genres. Whether you're a casual reader or an avid bookworm, we have something for everyone. Join us as we help you find your next favorite read!</p>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
 
   <!-- Footer -->
   <footer>
